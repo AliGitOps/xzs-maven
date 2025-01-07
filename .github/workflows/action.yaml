@@ -1,0 +1,25 @@
+name: Multi Env
+on:
+  workflow_dispatch:
+
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 
+
+      - name: Deploy to Remote Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_ADDRESS }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PEM_KEY }}
+          script: |
+            echo "ssh 连接成功"
+            touch /root/action1.txt
