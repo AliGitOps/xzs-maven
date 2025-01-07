@@ -1,4 +1,4 @@
-name: Multi Env
+name: deploy jar
 on:
   workflow_dispatch:
 
