@@ -11,15 +11,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 复制代码至容器中
+      - name: COPY file to Containerd
         uses: actions/checkout@v4 
 
-      - name: 连接服务器测试
-        uses: appleboy/ssh-action@master
+      - name: set java version  
+        uses: actions/setup-java@v4
         with:
-          host: ${{ secrets.SERVER_ADDRESS }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SSH_PEM_KEY }}
-          script: |
-            echo "ssh 连接成功"
-            touch /root/action1.txt
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build Maven
+        run: mvn clean package
+
+      - name: Deploy to Server(京东云)
+        uses: easingthemes/ssh-deploy@main
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PEM_KEY }}
+          SOURCE: "target/xzs-3.9.0.jar"
+          REMOTE_HOST: 116.196.80.124
+          REMOTE_USER: root
+          TARGET: /root/xzs-3.9.0.jar
+          
+
+        
+        # with:
+        #   host: ${{ secrets.SERVER_ADDRESS }}
+        #   username: ${{ secrets.SERVER_USER }}
+        #   key: ${{ secrets.SSH_PEM_KEY }}
+        #   script: |
+        #     echo "ssh 连接成功"
+        #     touch /root/action1.txt
