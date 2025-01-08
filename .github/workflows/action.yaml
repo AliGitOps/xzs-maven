@@ -27,10 +27,10 @@ jobs:
         uses: easingthemes/ssh-deploy@main
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PEM_KEY }}
-          SOURCE: "target/xzs-3.9.0.jar"
+          # SOURCE: "target/xzs-3.9.0.jar"
           REMOTE_HOST: 116.196.80.124
           REMOTE_USER: root
-          TARGET: /root/xzs-3.9.0.jar
+          # TARGET: /root/xzs-3.9.0.jar
           SCRIPT_AFTER: |
             touch /root/test.txt
             # pkill -f 'java -jar xzs-3.9.0.jar'
