@@ -33,7 +33,7 @@ jobs:
           # TARGET: /root/xzs-3.9.0.jar
           SCRIPT_AFTER: |
             pkill -f 'java -jar xzs-3.9.0.jar'
-            nohup java -jar /mnt/xzs-3.9.0.jar &
+            nohup /usr/local/java17/bin/java -jar /mnt/xzs-3.9.0.jar &
           
 
         
