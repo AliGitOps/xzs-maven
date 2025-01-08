@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: :tada: COPY file to Containerd
+      - name: COPY file to Containerd
         uses: actions/checkout@v4 
 
-      - name: :zap: set java version  
+      - name: set java version  
         uses: actions/setup-java@v4
         with:
           java-version: '17'
