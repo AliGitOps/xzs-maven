@@ -33,7 +33,7 @@ jobs:
           # TARGET: /root/xzs-3.9.0.jar
           SCRIPT_AFTER: |
             pkill -f 'java -jar /mnt/xzs-3.9.0.jar'
-            nohup /usr/local/java17/bin/java -Duser.timezone=Asia/Shanghai -jar -Dspring.profiles.active=prod  /mnt/xzs-3.9.0.jar  > start1.log  2>&1 &
+            nohup /usr/local/java17/bin/java -Duser.timezone=Asia/Shanghai -jar -Dspring.profiles.active=prod  /mnt/xzs-3.9.0.jar  > /mnt/start1.log  2>&1 &
           
 
         
